@@ -96,9 +96,13 @@ public class ATM {
 	public void transfer(int customerNum, double amount) {
 		assert state == TRANSACT;
 		Customer receivingCustomer = bank.findCustomer(customerNum);
-		Account receivingAccount = receivingCustomer.getAccount();
-		currentAccount.withdraw(amount);
-		receivingAccount.deposit(amount);
+		try {
+			Account receivingAccount = receivingCustomer.getAccount();
+			currentAccount.withdraw(amount);
+			receivingAccount.deposit(amount);
+		} catch (NullPointerException e) {
+			System.err.println("Didn't have this account : " + customerNum);;
+		}
 	}
 
 	/**
