@@ -5,8 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="CATax" class="register.CATaxCalculator"/>
-    <bean id="NYTax" class="register.NYTaxCalculator"/>
+    <bean id="CATax" class="prob1_atmXML.register.CATaxCalculator"/>
+    <bean id="NYTax" class="prob1_atmXML.register.NYTaxCalculator"/>
 
     <!--    Constructor Injection-->
 <!--    <bean id="register" class="register.CashRegister">-->
@@ -19,11 +19,11 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--    </bean>-->
 
     <!--    Setter Injection-->
-    <bean id="register" class="register.CashRegister">
+    <bean id="register" class="prob1_atmXML.register.CashRegister">
         <constructor-arg value="CA"/>
         <property name="taxCalculator" ref="CATax"/>
     </bean>
-    <bean id="registerInNY" class="register.CashRegister">
+    <bean id="registerInNY" class="prob1_atmXML.register.CashRegister">
         <constructor-arg value="NY"/>
         <property name="taxCalculator" ref="NYTax"/>
     </bean>

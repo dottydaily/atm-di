@@ -3,16 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="datasource" class="atm.DataSource">
+    <bean id="datasource" class="prob1_atmXML.atm.DataSource">
         <constructor-arg value="customers.txt"/>
     </bean>
-    <bean id="bank" class="atm.Bank">
+    <bean id="bank" class="prob1_atmXML.atm.Bank">
         <constructor-arg ref="datasource"/>
     </bean>
-    <bean id="atm" class="atm.ATM">
+    <bean id="atm" class="prob1_atmXML.atm.ATM">
         <constructor-arg ref="bank"/>
     </bean>
-    <bean id="atmSimulator" class="atm.ATMSimulator">
+    <bean id="atmSimulator" class="prob1_atmXML.atm.ATMSimulator">
         <constructor-arg ref="atm"/>
     </bean>
 </beans>

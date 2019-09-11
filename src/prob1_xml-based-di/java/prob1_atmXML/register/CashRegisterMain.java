@@ -1,4 +1,4 @@
-package register;
+package prob1_atmXML.register;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

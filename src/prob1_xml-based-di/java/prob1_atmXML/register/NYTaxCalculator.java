@@ -1,4 +1,4 @@
-package register;
+package prob1_atmXML.register;
 
 public class NYTaxCalculator implements TaxCalculator {
     public double calculate(double amount) {
