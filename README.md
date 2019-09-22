@@ -21,6 +21,14 @@
 >       Package "prob4_atmDatabaseWithAnnotationDI"
 >       Database "customers.db"
 >   - Add class DatabaseConnector (Use this for connect & query DB)
+
+> 5.) Database Connect via Spring JDBC/DAO
+>
+>       Package "prob5_atmSpringJDBC"
+>
+>   - Re-implement DatabaseConnector / DataSource for using XML-Based DI   
+>   - NOTE : Try to using annotation DI with value.properties
+>   but found a problem when injecting @Value into properties of Singleton instance
 ___________________________________________________________________________
 **_All .xml files store in directory "resources"_**
 

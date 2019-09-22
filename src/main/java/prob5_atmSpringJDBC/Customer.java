@@ -1,4 +1,4 @@
-package prob2_atmAnnotationDI;
+package prob5_atmSpringJDBC;
 
 /**
  * A bank customer with a checking and a savings account.

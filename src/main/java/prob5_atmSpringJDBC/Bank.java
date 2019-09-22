@@ -1,12 +1,15 @@
-package prob3_atmJavaConfigDI;
+package prob5_atmSpringJDBC;
 
-import java.io.IOException;
+import org.springframework.stereotype.Component;
+
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * A bank contains customers with bank accounts.
  */
+@Component
 public class Bank {
 
    private Map<Integer, Customer> customers;
@@ -15,12 +18,13 @@ public class Bank {
    /**
     * Constructs a bank with no customers.
     */
+
    public Bank(DataSource dataSource) {
       this.dataSource = dataSource;
       customers = new HashMap<Integer, Customer>();
    }
 
-   public void initializeCustomers() throws IOException {
+   public void initializeCustomers() throws SQLException {
       customers = dataSource.readCustomers();
    }
    /**

@@ -1,6 +1,9 @@
-package prob4_atmDatabaseWithAnnotationDI;
+package prob5_atmSpringJDBC;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.*;
+import java.util.List;
 
 public class DatabaseConnector {
     // use singleton concept
@@ -8,14 +11,18 @@ public class DatabaseConnector {
     private static DatabaseConnector databaseConnectorInstance;
     private Connection conn;
 
-    public static DatabaseConnector getInstance() {
+    // for spring JDBC with annotation-DI
+    private JdbcTemplate jdbcTemplate;
+
+    public static DatabaseConnector getInstance(JdbcTemplate jdbcTemplate) {
         if (databaseConnectorInstance == null)
-            databaseConnectorInstance = new DatabaseConnector();
+            databaseConnectorInstance = new DatabaseConnector(jdbcTemplate);
 
         return databaseConnectorInstance;
     }
 
-    public DatabaseConnector() {
+    public DatabaseConnector(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
         connect();
     }
 
@@ -24,10 +31,10 @@ public class DatabaseConnector {
      * and try to print all of data in this table
      */
     public void connect() {
-        try {
-            String dbURL = "jdbc:sqlite:customers.db";
-            this.conn = DriverManager.getConnection(dbURL);
 
+
+        try {
+            conn = jdbcTemplate.getDataSource().getConnection();
             if (conn != null) {
                 System.out.println("Trying to connect the database.....");
 
@@ -84,8 +91,14 @@ public class DatabaseConnector {
             sqlEx.printStackTrace();
         }
 
-
         return resultSet;
+    }
+
+    public List<Customer> getAllCustomer() {
+        String query = "SELECT * FROM customer";
+        List<Customer> customers = jdbcTemplate.query(query, new CustomerRowMapper());
+
+        return customers;
     }
 
     public void disconnect() {

@@ -1,15 +1,20 @@
-package prob1_atmXML.atm;
+package prob5_atmSpringJDBC;
 
-import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
    A text-based simulation of an automatic teller machine.
  */
+@Component
 public class ATMSimulator {
 
 	private ATM atm;
 
+	@Autowired
 	public ATMSimulator(ATM atm) {
 		this.atm = atm;
 	}
@@ -18,7 +23,7 @@ public class ATMSimulator {
 		try {
 			atm.init();
 		}
-		catch(IOException e) {
+		catch(SQLException e) {
 			System.out.println("Error reading account data.");
 			return;
 		}

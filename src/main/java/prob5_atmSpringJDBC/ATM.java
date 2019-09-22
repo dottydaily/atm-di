@@ -1,10 +1,13 @@
-package prob3_atmJavaConfigDI;
+package prob5_atmSpringJDBC;
 
-import java.io.IOException;
+import org.springframework.stereotype.Component;
+
+import java.sql.SQLException;
 
 /**
  * An ATM that accesses a bank.
  */
+@Component
 public class ATM {
 	public static final int START = 1;
 	public static final int TRANSACT = 2;
@@ -25,7 +28,7 @@ public class ATM {
 		this.state = START;
 	}
 
-	public void init() throws IOException {
+	public void init() throws SQLException {
 		bank.initializeCustomers();
 	}
 

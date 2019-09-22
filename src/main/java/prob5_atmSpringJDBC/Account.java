@@ -1,4 +1,4 @@
-package prob4_atmDatabaseWithAnnotationDI;
+package prob5_atmSpringJDBC;
 
 /**
  * A bank account has a balance that can be changed by
